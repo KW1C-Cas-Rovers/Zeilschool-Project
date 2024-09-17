@@ -1,11 +1,18 @@
 <?php
 
+use App\Http\Controllers\BoatController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/cursus', function () {
+    return view('cursus');
+})->name('cursus');
+
+Route::resource('boats', BoatController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
