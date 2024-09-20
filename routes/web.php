@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BoatController;
+use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -13,6 +14,8 @@ Route::get('/cursus', function () {
 })->name('cursus');
 
 Route::resource('boats', BoatController::class);
+
+Route::get('/calendar', CalendarController::class)->name('calendar');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
