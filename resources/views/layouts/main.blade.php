@@ -10,6 +10,9 @@
 </head>
 
 <body>
+    <script>
+        // window.isAuthenticated = {{ Auth::check() ? 'true' : 'false' }};
+    </script>
     @yield('content')
 </body>
 

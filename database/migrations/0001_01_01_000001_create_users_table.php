@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('address');
             $table->string('phone')->unique();
+            $table->foreignId('level_id')->constrained('level');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

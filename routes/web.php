@@ -8,11 +8,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/cursus', function () {
-    return view('cursus');
-})->name('cursus');
+Route::get('/courseinfo', [BoatController::class, 'index'])->name('courseinfo');
 
 Route::resource('boats', BoatController::class);
+
+Route::get('/reserve/{id}', [BoatController::class, 'show'])->name('reserve');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
