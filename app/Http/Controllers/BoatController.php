@@ -19,7 +19,7 @@ class BoatController extends Controller
             ->select('boats.*', 'level.id as level_id', 'level.name as level_name', 'boats.image as image_url') // Added image_url
             ->get();
 
-        return view('courseinfo', [
+        return view('courses', [
             'boats' => $boats,
         ]);
     }

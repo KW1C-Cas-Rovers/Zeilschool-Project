@@ -8,11 +8,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/courseinfo', [BoatController::class, 'index'])->name('courseinfo');
-
 Route::resource('boats', BoatController::class);
 
-Route::get('/reserve/{id}', [BoatController::class, 'show'])->name('reserve');
+Route::get('/courses', [BoatController::class, 'index'])->name('courses');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
