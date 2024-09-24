@@ -1,3 +1,59 @@
+// General calendar styles
+.fc {
+    @apply bg-light; // Set the background color to white
+    color: #333; // Set the text color to a dark shade
+    border: 1px solid #ddd; // Add a light border around the calendar
+    border-radius: 8px; // Add rounded corners
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Add a subtle shadow
+}
+
+// Calendar header styles
+.fc-toolbar {
+    background-color: #f8f9fa; // Light background for the header
+    border-bottom: 1px solid #ddd; // Light border at the bottom
+    padding: 10px; // Add padding
+    border-radius: 8px 8px 0 0; // Rounded corners at the top
+}
+
+.fc-toolbar-title {
+    font-size: 1.25rem; // Increase the font size of the title
+    font-weight: 500; // Make the title slightly bolder
+}
+
+.fc-button {
+    background-color: #007bff; // Primary button color
+    color: #fff; // White text color
+    border: none; // Remove border
+    border-radius: 4px; // Rounded corners
+    padding: 5px 10px; // Add padding
+    margin: 0 5px; // Add margin between buttons
+}
+
+.fc-button:hover {
+    background-color: #0056b3; // Darker shade on hover
+}
+
+// Calendar day cell styles
+.fc-daygrid-day {
+    border: 1px solid #ddd; // Light border around each day cell
+    padding: 10px; // Add padding inside each cell
+}
+
+.fc-daygrid-day-number {
+    font-size: 0.875rem; // Smaller font size for the day number
+    color: #888; // Lighter color for the day number
+}
+
+// Event styles
 .fc-daygrid-event {
-    background-color: #000;
+    background-color: #007bff; // Primary color for events
+    color: #fff; // White text color
+    border: none; // Remove border
+    border-radius: 4px; // Rounded corners
+    padding: 5px; // Add padding inside events
+    font-size: 0.875rem; // Smaller font size for event text
+}
+
+.fc-daygrid-event:hover {
+    background-color: #0056b3; // Darker shade on hover
 }

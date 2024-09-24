@@ -5,7 +5,8 @@ window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 
 import { Calendar } from "@fullcalendar/core";
 import dayGridPlugin from "@fullcalendar/daygrid";
-import("@fullcalendar/daygrid/main.css");
+import timeGridPlugin from "@fullcalendar/timegrid";
 
-window.calendar = Calendar;
+window.Calendar = Calendar;
 window.dayGridPlugin = dayGridPlugin;
+window.timeGridPlugin = timeGridPlugin;
