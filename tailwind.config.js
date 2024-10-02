@@ -18,6 +18,7 @@ export default {
                 primary: "#007bff",
                 secondary: "#0056b3",
                 light: "#f4f4f4",
+                extralight: "#F9FAFB",
                 dark: "#1a1a1a",
                 text: "#333333",
             },

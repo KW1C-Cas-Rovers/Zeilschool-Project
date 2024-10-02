@@ -1,10 +1,30 @@
 // General calendar styles
+.fc-calendar {
+    @apply bg-light rounded-md border-[1px] border-extralight;
+}
+
+.fc-view-button {
+    text-transform: capitalize; /* Optional: capitalize the first letter */
+}
+
+#calendar {
+    @apply rounded-md;
+}
 .fc {
     @apply bg-light; // Set the background color to white
     color: #333; // Set the text color to a dark shade
-    border: 1px solid #ddd; // Add a light border around the calendar
-    border-radius: 8px; // Add rounded corners
+    border-radius: 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Add a subtle shadow
+}
+
+/* Remove border from 30-minute rows only */
+.fc-theme-standard tr:nth-child(odd) .fc-timegrid-slot {
+    border-top: 1px solid #ddd; /* Remove the border only for 30-minute slots */
+}
+
+/* Keep the border for full-hour rows */
+.fc-theme-standard tr:nth-child(even) .fc-timegrid-slot {
+   border-top: none;   /* Adjust the color and thickness as needed */
 }
 
 // Calendar header styles
@@ -33,15 +53,20 @@
     background-color: #0056b3; // Darker shade on hover
 }
 
-// Calendar day cell styles
 .fc-daygrid-day {
-    border: 1px solid #ddd; // Light border around each day cell
-    padding: 10px; // Add padding inside each cell
+    @apply font-normal text-gray-500 border-none;
 }
 
-.fc-daygrid-day-number {
-    font-size: 0.875rem; // Smaller font size for the day number
-    color: #888; // Lighter color for the day number
+.fc-daygrid-daynumber {
+    @apply border-none;
+}
+
+// Calendar day cell styles
+.fc-scrollgrid-section {
+    @apply bg-extralight;
+}
+.fc-scrollgrid-section-body {
+    @apply bg-white;
 }
 
 // Event styles
