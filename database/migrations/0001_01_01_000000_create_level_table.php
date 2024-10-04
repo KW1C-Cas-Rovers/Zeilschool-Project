@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('boats', function (Blueprint $table) {
+        Schema::create('level', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->foreignId('level_id')->constrained('level');
-            $table->string('min_cap');
-            $table->string('max_cap');
-            $table->string('image')->nullable();
+            $table->string('name')->unique();
             $table->timestamps();
         });
     }
@@ -27,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('boats');
+        Schema::dropIfExists('level');
     }
 };
