@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BoatController;
 use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -9,11 +10,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('boats', BoatController::class);
-
 Route::get('/calendar', CalendarController::class)->name('calendar');
 
-Route::get('/courses', [BoatController::class, 'index'])->name('courses');
+Route::resource('courses', CourseController::class);
+// Route::get('boats/{id}', [CourseController::class, 'show'])->name('boats.show');
+
+Route::resource('boats', BoatController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

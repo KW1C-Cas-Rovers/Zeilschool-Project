@@ -19,7 +19,7 @@ class BoatController extends Controller
             ->select('boats.*', 'level.id as level_id', 'level.name as level_name', 'boats.image as image_url') // Added image_url
             ->get();
 
-        return view('courses', [
+        return view('boats.index', [
             'boats' => $boats,
         ]);
     }
@@ -70,11 +70,17 @@ class BoatController extends Controller
     {
         $boat = DB::table('boats')
             ->leftJoin('level', 'boats.level_id', '=', 'level.id')
-            ->select('boats.*', 'level.name as level_name')
+            ->select('boats.*', 'level.id as level_id', 'level.name as level_name', 'boats.image as image_url')
             ->where('boats.id', $id)
             ->first();
 
-        return view('reserve', compact('boat'));
+        if (! $boat) {
+            return redirect()->route('boats.index')->with('error', 'Boat not found');
+        }
+
+        return view('boats.show', [
+            'boat' => $boat,
+        ]);
     }
 
     /**
