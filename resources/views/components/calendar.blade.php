@@ -64,7 +64,7 @@
                 var dropdownMenu = document.getElementById('dropdownMenu');
 
                 var svgIcon = `
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-3 h-3 mt-1 ml-2 text-gray-500 transition-transform duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="inline-block w-3 h-3 mt-1 ml-2 text-gray-500 transition-transform duration-300">
             <path fill="currentColor" d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/>
         </svg>`;
 
@@ -77,8 +77,7 @@
                         week: {
                             titleFormat: {
                                 year: 'numeric',
-                                month: 'long',
-                                day: 'numeric'
+                                month: 'long' // Only display month and year
                             },
                             dayHeaderContent: (args) => {
                                 const day = args.date.toLocaleDateString('en-US', {
@@ -99,7 +98,7 @@
                     height: 530,
                     slotMinTime: '00:00:00',
                     slotMaxTime: '23:59:59',
-                    scrollTime: '08:00:00',
+                    scrollTime: '07:30:00',
                     events: @json($events),
 
                     // This function is called every time the view is set
@@ -139,7 +138,6 @@
                         dropdownMenuButton.querySelector('svg').classList.remove('rotate-180');
                     }
                 });
-
 
                 // View change handlers
                 document.getElementById('dropdown-view-month').addEventListener('click', function() {

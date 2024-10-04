@@ -4,7 +4,12 @@
 }
 
 .fc-view-button {
-    text-transform: capitalize; /* Optional: capitalize the first letter */
+    text-transform: capitalize;
+}
+
+/* Style the hour labels to zoom and change color */
+.fc-timegrid-slot-label {
+    @apply text-xs text-[#9ca3af] -top-3 relative;
 }
 
 #calendar {
@@ -17,14 +22,16 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Add a subtle shadow
 }
 
-/* Remove border from 30-minute rows only */
-.fc-theme-standard tr:nth-child(odd) .fc-timegrid-slot {
-    border-top: 1px solid #ddd; /* Remove the border only for 30-minute slots */
+// Change border of calendar grid
+.fc-theme-standard tr:nth-child(odd) .fc-timegrid-slot-lane {
+    @apply border-t-light border-solid;
 }
 
-/* Keep the border for full-hour rows */
-.fc-theme-standard tr:nth-child(even) .fc-timegrid-slot {
-   border-top: none;   /* Adjust the color and thickness as needed */
+
+.fc-theme-standard tr .fc-timegrid-slot {
+    @apply bg-white;
+    border-top: none;
+    height: 56px;
 }
 
 // Calendar header styles
@@ -64,6 +71,12 @@
 // Calendar day cell styles
 .fc-scrollgrid-section {
     @apply bg-extralight;
+    .fc-col-header-cell {
+        @apply h-12;
+        .fc-col-header-cell-cushion {
+            @apply relative text-center leading-10;
+        }
+    }
 }
 .fc-scrollgrid-section-body {
     @apply bg-white;
