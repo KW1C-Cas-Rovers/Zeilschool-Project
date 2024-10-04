@@ -32,7 +32,7 @@
                             Reserveer
                         </a>
                     @else
-                        <a href="{{ route('login', ['redirect' => route('calendar')]) }}"
+                        <a href="{{ route('login', ['boat_id' => $boat->id]) }}"
                             class="px-4 py-2 mt-2 text-white bg-blue-500 rounded card-button reserve-button">
                             Reserveer
                         </a>

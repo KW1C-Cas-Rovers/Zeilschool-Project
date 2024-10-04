@@ -18,10 +18,8 @@
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />
-
             <x-text-input id="password" class="block w-full mt-1" type="password" name="password" required
                 autocomplete="current-password" />
-
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
@@ -34,6 +32,11 @@
                 <span class="text-sm text-gray-600 ms-2 dark:text-gray-400">{{ __('Remember me') }}</span>
             </label>
         </div>
+
+        <!-- Hidden input for boat_id -->
+        @if (request('boat_id'))
+            <input type="hidden" name="boat_id" value="{{ request('boat_id') }}">
+        @endif
 
         <div class="flex items-center justify-end mt-4">
             @if (Route::has('password.request'))
