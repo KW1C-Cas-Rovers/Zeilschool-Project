@@ -72,6 +72,12 @@ jobs:
         DB_DATABASE: database/database.sqlite
       run: php artisan migrate --force
 
+    - name: Seed the database
+      env:
+        DB_CONNECTION: sqlite
+        DB_DATABASE: database/database.sqlite
+      run: php artisan db:seed
+
     - name: Execute tests (Unit and Feature tests) via PHPUnit/Pest
       env:
         DB_CONNECTION: sqlite

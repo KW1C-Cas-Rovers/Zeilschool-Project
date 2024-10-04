@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Level;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -19,7 +20,9 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('auth.register');
+        $levels = Level::all();
+
+        return view('auth.register', compact('levels'));
     }
 
     /**
@@ -34,7 +37,8 @@ class RegisteredUserController extends Controller
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'address' => ['required', 'string', 'max:255'],
-            'phone' => ['required', 'string', 'regex:/^(\+31|0)(6|[1-9][0-9])([ -]?[0-9]{8})$/', 'unique:'.User::class]
+            'phone' => ['required', 'string', 'regex:/^(\+31|0)(6|[1-9][0-9])([ -]?[0-9]{8})$/', 'unique:'.User::class],
+            'level' => ['required', 'exists:levels,id'],
         ]);
 
         $user = User::create([
@@ -42,7 +46,8 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'address' => $request->address,
-            'phone' => $request->phone
+            'phone' => $request->phone,
+            'level_id' => $request->level,
         ]);
 
         event(new Registered($user));

@@ -42,7 +42,7 @@
         </div>
 
         <div class="mt-4">
-            <x-input-label for="address" :value="__('register.address')" />
+            <x-input-label for="address" :value="__('Address')" />
 
             <x-text-input id="address" class="block mt-1 w-full"
                           type="text"
@@ -52,13 +52,24 @@
         </div>
 
         <div class="mt-4">
-            <x-input-label for="phone" :value="__('register.phone')" />
+            <x-input-label for="phone" :value="__('Phone')" />
 
             <x-text-input id="phone" class="block mt-1 w-full"
                           type="text"
                           name="phone" required autocomplete="phone" />
 
             <x-input-error :messages="$errors->get('address')" class="mt-2" />
+        </div>
+
+        <div class="mt-4">
+            <x-input-label for="levels" :value="__('Phone')" />
+            <select id="levels" name="level" class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm block mt-1 w-full">
+                @foreach($levels as $level)
+                    <option value="{{ $level->id }}">
+                        {{ Str::ucfirst($level->name) }}
+                    </option>
+                @endforeach
+            </select>
         </div>
 
         <div class="flex items-center justify-end mt-4">
