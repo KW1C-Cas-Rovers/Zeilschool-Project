@@ -36,7 +36,12 @@ class CourseController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id) {}
+    public function show($id)
+    {
+        $courses = Course::all();
+
+        return view('courses.index', compact('courses'));
+    }
 
     /**
      * Show the form for editing the specified resource.

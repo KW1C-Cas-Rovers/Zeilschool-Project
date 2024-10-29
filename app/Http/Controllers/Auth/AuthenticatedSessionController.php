@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,13 +21,32 @@ class AuthenticatedSessionController extends Controller
     /**
      * Handle an incoming authentication request.
      */
-    public function store(LoginRequest $request): RedirectResponse
+    public function store(Request $request)
     {
-        $request->authenticate();
+        // Validate the request
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
 
-        $request->session()->regenerate();
+        // Attempt to log the user in
+        if (Auth::attempt($request->only('email', 'password'))) {
+            // Regenerate the session
+            $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard', absolute: false));
+            // Check if boat_id exists in the request
+            if ($request->has('boat_id')) {
+                return redirect()->intended(route('calendar', ['boat_id' => $request->input('boat_id')]));
+            }
+
+            // Redirect to the dashboard if there's no boat_id
+            return redirect()->intended(route('dashboard'));
+        }
+
+        // Return back with an error message
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ])->onlyInput('email');
     }
 
     /**
@@ -43,5 +61,11 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/');
+    }
+
+    public function authenticated(Request $request, $user)
+    {
+        // If there is a redirect URL in the session, use that; otherwise, go to the default route
+        return redirect()->intended($request->input('redirect', route('dashboard')));
     }
 }

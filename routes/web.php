@@ -13,7 +13,6 @@ Route::get('/', function () {
 Route::get('/calendar', CalendarController::class)->name('calendar');
 
 Route::resource('courses', CourseController::class);
-// Route::get('boats/{id}', [CourseController::class, 'show'])->name('boats.show');
 
 Route::resource('boats', BoatController::class);
 
